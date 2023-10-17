@@ -42,8 +42,17 @@ export default class App extends Component {
     console.log(this.state.contacts);
   };
 
+  onFilterChange = value => {
+    this.setState({ filter: value });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
     return (
       <>
         <div>
@@ -53,9 +62,9 @@ export default class App extends Component {
           />
 
           <h2>Contacts</h2>
-          <Filter />
+          <Filter onFilterChange={value => this.onFilterChange(value)} />
           <ContactList
-            contacts={contacts}
+            contacts={filteredContacts}
             onDeleteContact={this.deleteContactById}
           />
         </div>
