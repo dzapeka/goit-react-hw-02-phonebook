@@ -42,11 +42,13 @@ export class ContactForm extends Component {
             id={this.nameInputId}
             autoComplete="off"
             required
+            pattern="^[A-Za-z\- ']+$"
           />
         </label>
         <label htmlFor={this.numberInputId}>
           Number
           <input
+            className="phoneNumberInput"
             type="tel"
             name="number"
             value={number}
@@ -54,6 +56,9 @@ export class ContactForm extends Component {
             id={this.numberInputId}
             autoComplete="off"
             required
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+            placeholder="xxx-xx-xx"
+            size="8"
           />
         </label>
         <button type="submit">Add contact</button>
