@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import styles from './Filter.module.css';
+
 export class Filter extends Component {
   filterInputId = nanoid();
 
@@ -10,7 +12,7 @@ export class Filter extends Component {
   render() {
     return (
       <label htmlFor={this.filterInputId}>
-        Find contacts by name
+        <p className={styles.labelText}>Find contacts by name</p>
         <input
           type="text"
           name="filter"
